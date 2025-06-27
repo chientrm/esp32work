@@ -1,0 +1,69 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PlatformIO: Build ESP32 Project",
+      "type": "shell",
+      "command": "pio",
+      "args": ["run"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": ["$platformio"]
+    },
+    {
+      "label": "PlatformIO: Upload to ESP32",
+      "type": "shell",
+      "command": "pio",
+      "args": ["run", "--target", "upload"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": ["$platformio"],
+      "dependsOn": "PlatformIO: Build ESP32 Project"
+    },
+    {
+      "label": "PlatformIO: Serial Monitor",
+      "type": "shell",
+      "command": "pio",
+      "args": ["device", "monitor"],
+      "group": "test",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Check ESP32 Connection",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo 'Checking ESP32 connection...' && lsusb | grep -i ftdi && ls -la /dev/ttyUSB* && echo 'Connection check complete.'"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
