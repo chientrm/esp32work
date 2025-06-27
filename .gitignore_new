@@ -1,9 +1,4 @@
 # ESP32 PlatformIO Development .gitignore
-#
-# Optimized for ESP32-WROOM-32 development using PlatformIO
-# Supports professional embedded development workflow
-# Excludes Arduino IDE artifacts (Arduino IDE not used in this workspace)
-#
 
 # ===========================
 # PlatformIO

@@ -1,6 +1,6 @@
 # ESP32 Development Workspace
 
-Welcome to your ESP32 development environment! This workspace is set up for your **38-pin ESP32 development board with FT232 USB-to-serial converter** and compatible shield.
+Welcome to your ESP32 development environment! This workspace is set up for **professional ESP32 development using PlatformIO** with your **38-pin ESP32 development board with FT232 USB-to-serial converter** and compatible shield.
 
 ## 🛠️ Hardware Setup
 
@@ -13,6 +13,15 @@ Welcome to your ESP32 development environment! This workspace is set up for your
 - **Microcontroller**: ESP32 (Dual-core Xtensa LX6, 240MHz)
 - **Memory**: 520KB SRAM, 4MB Flash
 - **Connectivity**: WiFi 802.11 b/g/n (2.4GHz ISM band), Bluetooth 4.2 + BLE
+
+## 📁 Project Structure
+
+- `basic_blink/` - Simple LED blinking test project
+- `wifi_scanner/` - WiFi network scanning and analysis
+- `sensor_monitor/` - Comprehensive sensor monitoring system
+- `system_test_project/` - System information and hardware testing
+- `platformio_examples/` - Additional PlatformIO project examples
+- `docs/` - Hardware documentation and guides
 
 ### Pin Configuration
 
@@ -53,22 +62,26 @@ lsusb | grep FTDI
 sudo apt install libftdi1-2 libftdi1-dev
 ```
 
-### 3. Upload Your First Program
+### 3. Build and Upload Your First Program
 
 1. Connect your ESP32 board via USB
-2. Open `arduino_examples/01_blink/blink.ino`
-3. Select board: "ESP32 Dev Module"
-4. Select port: `/dev/ttyUSB0` (or similar)
-5. Upload!
+2. Navigate to any project directory (e.g., `basic_blink/`)
+3. Build and upload:
 
-## 📁 Project Structure
+```bash
+cd basic_blink/
+pio run -t upload
+pio device monitor  # To see serial output
+```
+
+## � Available Projects
 
 ```
 esp32work/
-├── arduino_examples/          # Arduino IDE compatible projects
-│   ├── 01_blink/             # Basic LED blink
-│   ├── 02_wifi_connect/      # WiFi connection example
-│   └── 03_sensor_reading/    # Sensor input example
+├── basic_blink/              # Simple LED blinking test
+├── wifi_scanner/             # WiFi network analysis
+├── sensor_monitor/           # Comprehensive sensor monitoring
+├── system_test_project/      # System information display
 ├── platformio_examples/       # PlatformIO projects
 │   ├── basic_project/        # PlatformIO basic setup
 │   └── advanced_features/    # Advanced ESP32 features
