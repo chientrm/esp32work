@@ -251,3 +251,5 @@ venv.bak/
 # old_versions/
 
 # End of .gitignore
+
+arduino-cli
