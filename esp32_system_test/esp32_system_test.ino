@@ -21,17 +21,27 @@ void setup()
     Serial.printf("Flash Size: %d MB\n", ESP.getFlashChipSize() / (1024 * 1024));
     Serial.printf("Free Heap: %d KB\n", ESP.getFreeHeap() / 1024);
 
-    // Test built-in LED
-    pinMode(2, OUTPUT);
-    Serial.println("Testing built-in LED (GPIO2)...");
+    // Test analog input capabilities
+    Serial.println("Testing analog input (GPIO36)...");
     for (int i = 0; i < 5; i++)
     {
-        digitalWrite(2, HIGH);
-        delay(200);
-        digitalWrite(2, LOW);
-        delay(200);
+        int analogValue = analogRead(36); // VP pin
+        float voltage = (analogValue * 3.3) / 4095.0;
+        Serial.printf("  Reading %d: %d (%.2fV)\n", i + 1, analogValue, voltage);
+        delay(500);
     }
-    Serial.println("LED test complete!");
+    Serial.println("Analog input test complete!");
+
+    // Test touch sensor
+    Serial.println("Testing touch sensor (GPIO15)...");
+    for (int i = 0; i < 5; i++)
+    {
+        int touchValue = touchRead(15);
+        Serial.printf("  Touch reading %d: %d %s\n", i + 1, touchValue,
+                      touchValue < 20 ? "(TOUCHED)" : "(NOT TOUCHED)");
+        delay(500);
+    }
+    Serial.println("Touch sensor test complete!");
 
     // Test WiFi capability
     Serial.println("Testing WiFi capability...");
@@ -58,12 +68,18 @@ void setup()
 
 void loop()
 {
-    // Blink LED and show uptime
-    digitalWrite(2, HIGH);
-    delay(1000);
-    digitalWrite(2, LOW);
-    delay(1000);
-
+    // Show system status without LED blinking
     Serial.printf("Uptime: %d seconds | Free Heap: %d KB\n",
                   millis() / 1000, ESP.getFreeHeap() / 1024);
+
+    // Read analog and touch sensors periodically
+    int analogValue = analogRead(36);
+    int touchValue = touchRead(15);
+    float voltage = (analogValue * 3.3) / 4095.0;
+
+    Serial.printf("Sensors - Analog: %d (%.2fV) | Touch: %d %s\n",
+                  analogValue, voltage, touchValue,
+                  touchValue < 20 ? "(TOUCHED)" : "");
+
+    delay(3000); // Update every 3 seconds
 }
