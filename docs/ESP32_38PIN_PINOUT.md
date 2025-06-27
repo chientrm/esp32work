@@ -2,6 +2,14 @@
 
 This document provides the complete pin mapping for your 38-pin ESP32 development board with FT232 USB-to-serial converter.
 
+## Your Specific Hardware
+
+- **ESP32 Module**: ESP32-WROOM-32 (marked as "2Y-ESP32")
+- **Specifications**: WiFi + Bluetooth, 2.4GHz ISM band, 802.11 b/g/n
+- **Flash Memory**: 4MB
+- **SRAM**: 520KB
+- **Package**: 38-pin development board with FT232 USB converter
+
 ## Board Layout
 
 ```

@@ -7,11 +7,12 @@ Welcome to your ESP32 development environment! This workspace is set up for your
 ### Your ESP32 Board
 
 - **Model**: 38-pin ESP32 Development Board
+- **ESP32 Module**: ESP32-WROOM-32 (2Y-ESP32 marking)
 - **USB Converter**: FT232 (FTDI)
 - **Shield**: 38-pin expansion shield
 - **Microcontroller**: ESP32 (Dual-core Xtensa LX6, 240MHz)
-- **Memory**: 520KB SRAM, 4MB Flash (typical)
-- **Connectivity**: WiFi 802.11 b/g/n, Bluetooth 4.2
+- **Memory**: 520KB SRAM, 4MB Flash
+- **Connectivity**: WiFi 802.11 b/g/n (2.4GHz ISM band), Bluetooth 4.2 + BLE
 
 ### Pin Configuration
 

@@ -37,136 +37,136 @@ void blinkLED();
 
 void setup()
 {
-    // Initialize serial communication
-    Serial.begin(115200);
-    delay(1000);
+  // Initialize serial communication
+  Serial.begin(115200);
+  delay(1000);
 
-    bootTime = millis();
+  bootTime = millis();
 
-    Serial.println("\n=== ESP32 PlatformIO Basic Project ===");
-    Serial.println("Initializing system...");
+  Serial.println("\n=== ESP32 PlatformIO Basic Project ===");
+  Serial.println("Initializing system...");
 
-    // Initialize LED pin
-    pinMode(LED_PIN, OUTPUT);
-    digitalWrite(LED_PIN, LOW);
+  // Initialize LED pin
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
 
-    // Print system information
-    printSystemInfo();
+  // Print system information
+  printSystemInfo();
 
-    Serial.println("Setup completed successfully!");
-    Serial.println("System ready for operation.");
-    Serial.println("=====================================\n");
+  Serial.println("Setup completed successfully!");
+  Serial.println("System ready for operation.");
+  Serial.println("=====================================\n");
 }
 
 void loop()
 {
-    // Blink LED
-    blinkLED();
+  // Blink LED
+  blinkLED();
 
-    // Print status every 10 seconds
-    static unsigned long lastStatusPrint = 0;
-    if (millis() - lastStatusPrint >= 10000)
-    {
-        lastStatusPrint = millis();
+  // Print status every 10 seconds
+  static unsigned long lastStatusPrint = 0;
+  if (millis() - lastStatusPrint >= 10000)
+  {
+    lastStatusPrint = millis();
 
-        Serial.println("\n--- System Status ---");
-        Serial.print("Uptime: ");
-        Serial.print((millis() - bootTime) / 1000);
-        Serial.println(" seconds");
+    Serial.println("\n--- System Status ---");
+    Serial.print("Uptime: ");
+    Serial.print((millis() - bootTime) / 1000);
+    Serial.println(" seconds");
 
-        printMemoryInfo();
+    printMemoryInfo();
 
-        Serial.print("LED State: ");
-        Serial.println(ledState ? "ON" : "OFF");
-        Serial.println("--------------------\n");
-    }
+    Serial.print("LED State: ");
+    Serial.println(ledState ? "ON" : "OFF");
+    Serial.println("--------------------\n");
+  }
 
-    // Small delay to prevent watchdog issues
-    delay(10);
+  // Small delay to prevent watchdog issues
+  delay(10);
 }
 
 void printSystemInfo()
 {
-    Serial.println("\n--- System Information ---");
+  Serial.println("\n--- System Information ---");
 
-    // Chip information
-    Serial.print("Chip Model: ");
-    Serial.println(ESP.getChipModel());
-    Serial.print("Chip Revision: ");
-    Serial.println(ESP.getChipRevision());
-    Serial.print("Number of Cores: ");
-    Serial.println(ESP.getChipCores());
+  // Chip information
+  Serial.print("Chip Model: ");
+  Serial.println(ESP.getChipModel());
+  Serial.print("Chip Revision: ");
+  Serial.println(ESP.getChipRevision());
+  Serial.print("Number of Cores: ");
+  Serial.println(ESP.getChipCores());
 
-    // Frequency information
-    Serial.print("CPU Frequency: ");
-    Serial.print(ESP.getCpuFreqMHz());
-    Serial.println(" MHz");
+  // Frequency information
+  Serial.print("CPU Frequency: ");
+  Serial.print(ESP.getCpuFreqMHz());
+  Serial.println(" MHz");
 
-    // Flash information
-    Serial.print("Flash Size: ");
-    Serial.print(ESP.getFlashChipSize() / (1024 * 1024));
-    Serial.println(" MB");
-    Serial.print("Flash Speed: ");
-    Serial.print(ESP.getFlashChipSpeed() / (1000 * 1000));
-    Serial.println(" MHz");
+  // Flash information
+  Serial.print("Flash Size: ");
+  Serial.print(ESP.getFlashChipSize() / (1024 * 1024));
+  Serial.println(" MB");
+  Serial.print("Flash Speed: ");
+  Serial.print(ESP.getFlashChipSpeed() / (1000 * 1000));
+  Serial.println(" MHz");
 
-    // SDK information
-    Serial.print("ESP-IDF Version: ");
-    Serial.println(ESP.getSdkVersion());
+  // SDK information
+  Serial.print("ESP-IDF Version: ");
+  Serial.println(ESP.getSdkVersion());
 
-    // MAC Address
-    Serial.print("MAC Address: ");
-    Serial.println(WiFi.macAddress());
+  // MAC Address
+  Serial.print("MAC Address: ");
+  Serial.println(WiFi.macAddress());
 
-    // Memory information
-    printMemoryInfo();
+  // Memory information
+  printMemoryInfo();
 
-    Serial.println("-------------------------");
+  Serial.println("-------------------------");
 }
 
 void printMemoryInfo()
 {
-    Serial.print("Free Heap: ");
-    Serial.print(ESP.getFreeHeap());
-    Serial.println(" bytes");
+  Serial.print("Free Heap: ");
+  Serial.print(ESP.getFreeHeap());
+  Serial.println(" bytes");
 
-    Serial.print("Largest Free Block: ");
-    Serial.print(ESP.getMaxAllocHeap());
-    Serial.println(" bytes");
+  Serial.print("Largest Free Block: ");
+  Serial.print(ESP.getMaxAllocHeap());
+  Serial.println(" bytes");
 
-    Serial.print("Min Free Heap: ");
-    Serial.print(ESP.getMinFreeHeap());
-    Serial.println(" bytes");
+  Serial.print("Min Free Heap: ");
+  Serial.print(ESP.getMinFreeHeap());
+  Serial.println(" bytes");
 
-    // PSRAM information (if available)
-    if (ESP.getPsramSize() > 0)
-    {
-        Serial.print("PSRAM Size: ");
-        Serial.print(ESP.getPsramSize());
-        Serial.println(" bytes");
-        Serial.print("Free PSRAM: ");
-        Serial.print(ESP.getFreePsram());
-        Serial.println(" bytes");
-    }
-    else
-    {
-        Serial.println("PSRAM: Not available");
-    }
+  // PSRAM information (if available)
+  if (ESP.getPsramSize() > 0)
+  {
+    Serial.print("PSRAM Size: ");
+    Serial.print(ESP.getPsramSize());
+    Serial.println(" bytes");
+    Serial.print("Free PSRAM: ");
+    Serial.print(ESP.getFreePsram());
+    Serial.println(" bytes");
+  }
+  else
+  {
+    Serial.println("PSRAM: Not available");
+  }
 }
 
 void blinkLED()
 {
-    unsigned long currentMillis = millis();
+  unsigned long currentMillis = millis();
 
-    if (currentMillis - previousMillis >= BLINK_INTERVAL)
-    {
-        previousMillis = currentMillis;
-        ledState = !ledState;
-        digitalWrite(LED_PIN, ledState);
+  if (currentMillis - previousMillis >= BLINK_INTERVAL)
+  {
+    previousMillis = currentMillis;
+    ledState = !ledState;
+    digitalWrite(LED_PIN, ledState);
 
-        Serial.print("LED: ");
-        Serial.println(ledState ? "ON" : "OFF");
-    }
+    Serial.print("LED: ");
+    Serial.println(ledState ? "ON" : "OFF");
+  }
 }
 
 /*

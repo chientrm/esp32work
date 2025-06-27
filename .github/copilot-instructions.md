@@ -8,7 +8,17 @@ This is an ESP32 development workspace for a 38-pin ESP32 development board with
 
 ## Hardware Specifications
 
-- **Board**: ESP32 38-pin development board
+- **ESP32 Module**: ESP32-WROOM-32 (marked as "2Y-ESP32")
+- **Board**: 38-pin ESP32 development board
+- **USB Converter**: FT232 (FTDI)
+- **Shield**: 38-pin compatible expansion shield
+- **WiFi**: 802.11 b/g/n, 2.4GHz ISM band
+- **Bluetooth**: 4.2 + BLE (Bluetooth Low Energy)
+- **Flash**: 4MB
+- **SRAM**: 520KB
+- **Development Environment**: Arduino IDE + PlatformIO
+
+- **Board**: 38-pin ESP32 development board
 - **USB Converter**: FT232 (FTDI)
 - **Shield**: 38-pin compatible expansion shield
 - **Development Environment**: Arduino IDE + PlatformIO
